@@ -291,3 +291,7 @@ div.event{
   color: white;
   text-shadow: 2px 2px black;
 }
+
+div.event h5{
+  margin: 0 0 0px;
+}

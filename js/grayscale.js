@@ -68,5 +68,5 @@ function getTime(string){
 }
 
 function listEvent(name, location, date, start, end){
-  jQuery('#calendar-list').append("<div class='event'><span>"+name+"</span><br><br><br><p>"+location+"<br>"+date+"<br>"+start+" to "+end+"</p></div>");
+  jQuery('#calendar-list').append("<div class='event'><h5><u>"+name+"</u></h5><p>"+location+"<br>"+date+"<br>"+start+" to "+end+"</p></div>");
 }
