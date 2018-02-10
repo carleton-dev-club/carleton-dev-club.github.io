@@ -197,7 +197,7 @@ a:focus, a:hover {
 
 .calendar-section {
   color: white;
-  background: url("../img/Calendar.jpg") no-repeat center center scroll;
+  background: url("../img/CalendarContrast.jpg") no-repeat center center scroll;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
