@@ -34,3 +34,39 @@
   $(window).scroll(navbarCollapse);
 
 })(jQuery); // End of use strict
+
+jQuery.get("https://www.googleapis.com/calendar/v3/calendars/ccss.carleton.ca_5q9bkrvq1iuaut07nud647vps4%40group.calendar.google.com/events?alwaysIncludeEmail=false&orderBy=startTime&showDeleted=false&singleEvents=true&key=AIzaSyAUKmclQT8DJ0v5E7LOm417IHj4ble7tDs", function(data, err){
+  var calendar = data;
+  var count = 0;
+
+  for(var event in calendar['items']){
+    if(count++ >= 4) break;
+
+    console.log(calendar['items'][event]['summary']);
+    console.log(calendar['items'][event]['location']);
+    console.log(getDate(calendar['items'][event]['start']['dateTime']));
+    console.log(getTime(calendar['items'][event]['start']['dateTime']));
+    console.log(getTime(calendar['items'][event]['end']['dateTime']));
+
+    listEvent(
+      calendar['items'][event]['summary'],
+      calendar['items'][event]['location'],
+      getDate(calendar['items'][event]['start']['dateTime']),
+      getTime(calendar['items'][event]['start']['dateTime']),
+      getTime(calendar['items'][event]['end']['dateTime']));
+
+  }
+});
+
+function getDate(string){
+  string = string.substring(0, 10).split('-');
+  return string[2]+", "+string[1]+", "+string[0];
+}
+
+function getTime(string){
+  return string.substring(11, 16);
+}
+
+function listEvent(name, location, date, start, end){
+  jQuery('#calendar-list').append("<div class='event'><span>"+name+"</span><br><br><br><p>"+location+"<br>"+date+"<br>"+start+" to "+end+"</p></div>");
+}

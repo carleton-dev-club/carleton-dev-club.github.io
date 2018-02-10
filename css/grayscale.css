@@ -195,6 +195,16 @@ a:focus, a:hover {
   background-size: cover;
 }
 
+.calendar-section {
+  color: white;
+  background: url("../img/Calendar.jpg") no-repeat center center scroll;
+  background-color: black;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .btn {
   font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
@@ -266,4 +276,19 @@ img::selection {
 
 img::-moz-selection {
   background: transparent;
+}
+
+div.event{
+  box-shadow: 2px 2px black;
+  background-color:rgba(0, 0, 0, 0.5);
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  margin: 10px;
+  line-height: 50%;
+  padding-top: 12px;
+  background-size: contain;
+  color: white;
+  text-shadow: 2px 2px black;
+  cursor: pointer;
 }
