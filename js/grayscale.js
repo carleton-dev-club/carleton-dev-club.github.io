@@ -38,9 +38,15 @@
 jQuery.get("https://www.googleapis.com/calendar/v3/calendars/ccss.carleton.ca_5q9bkrvq1iuaut07nud647vps4%40group.calendar.google.com/events?alwaysIncludeEmail=false&orderBy=startTime&showDeleted=false&singleEvents=true&key=AIzaSyAUKmclQT8DJ0v5E7LOm417IHj4ble7tDs", function(data, err){
   var calendar = data;
   var count = 0;
+  var d = new Date();
+  var month = d.getMonth();
+  var date = d.getDate();
+  var year = d.getYear();
 
   for(var event in calendar['items']){
-    if(count++ >= 4) break;
+    if(count >= 4) break;
+    
+    var eventDate = stripDate(calendar['items'][event]['start']['dateTime']);
 
     console.log(calendar['items'][event]['summary']);
     console.log(calendar['items'][event]['location']);
@@ -48,19 +54,31 @@ jQuery.get("https://www.googleapis.com/calendar/v3/calendars/ccss.carleton.ca_5q
     console.log(getTime(calendar['items'][event]['start']['dateTime']));
     console.log(getTime(calendar['items'][event]['end']['dateTime']));
 
-    listEvent(
+    if(date <= eventDate['date'] && month <= eventDate['month'] && year <= eventDate['year']){
+      listEvent(
       calendar['items'][event]['summary'],
       calendar['items'][event]['location'],
       getDate(calendar['items'][event]['start']['dateTime']),
       getTime(calendar['items'][event]['start']['dateTime']),
       getTime(calendar['items'][event]['end']['dateTime']));
-
+      
+      count++;
+    }
   }
 });
 
 function getDate(string){
   string = string.substring(0, 10).split('-');
   return string[2]+", "+string[1]+", "+string[0];
+}
+    
+function stripDate(string){
+  var result = {};
+  string = string.substring(0, 10).split('-');
+  
+  result['date'] = string[2];
+  result['month'] = string[1];
+  result['year'] = string[0];
 }
 
 function getTime(string){
