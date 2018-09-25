@@ -62,7 +62,7 @@ jQuery.get("https://www.googleapis.com/calendar/v3/calendars/ccss.carleton.ca_5q
 
 function getDate(string){
   string = string.substring(0, 10).split('-');
-  return string[2]+", "+string[1]+", "+string[0];
+  return string[2]+" - "+string[1]+" - "+string[0];
 }
     
 function stripDate(string){
