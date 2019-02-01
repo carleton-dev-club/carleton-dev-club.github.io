@@ -47,7 +47,7 @@ jQuery.get("https://www.googleapis.com/calendar/v3/calendars/ccss.carleton.ca_5q
     if(count >= 4) break;
     var eventDate = stripDate(calendar['items'][event]['start']['dateTime']);
 
-    if(date <= eventDate['date'] && month <= eventDate['month'] && year <= eventDate['year']){
+    if(date <= eventDate['date'] && month <= eventDate['month'] && year == eventDate['year']){
       listEvent(
       calendar['items'][event]['summary'],
       calendar['items'][event]['location'],
