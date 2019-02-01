@@ -42,6 +42,9 @@ jQuery.get("https://www.googleapis.com/calendar/v3/calendars/ccss.carleton.ca_5q
   var month = d.getMonth();
   var date = d.getDate();
   var year = d.getYear();
+  
+  console.log(year)
+  console.log(data);
 
   for(var event in calendar['items']){
     if(count >= 4) break;
